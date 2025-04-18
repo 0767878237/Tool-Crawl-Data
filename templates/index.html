@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Quản lý Task Crawl</h1>
+
+    <!-- Form để nhập URL filter và tạo task -->
+    <form action="/create-task" method="post">
+        <label for="url_filter">Nhập URL filter:</label>
+        <input type="text" id="url_filter" name="url_filter" required>
+        <button type="submit">Tạo Task</button>
+    </form>
+
+    <h2>Danh sách các Task:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>URL Filter</th>
+                <th>Trạng Thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.url_filter }}</td>
+                <td>{{ task.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
